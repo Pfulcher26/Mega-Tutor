@@ -7,7 +7,13 @@ import './App.css'
 function App() {
 
   return (
-    <Container><h1>Welcome to Mega Tutor</h1></Container>
+    <Container>
+      <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/appointments' element={<Appointments />}></Route>
+        <Route path='/about' element={<About />}></Route>
+      </Routes>
+    </Container>
   )
 }
 
