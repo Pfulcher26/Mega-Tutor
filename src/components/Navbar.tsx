@@ -1,11 +1,23 @@
-import { Container, Navbar as NavbarBs } from "react-bootstrap"
+import { Container, Nav, Navbar as NavbarBs } from "react-bootstrap"
+import { NavLink } from "react-router-dom"
+import './Navbar.css'
 
 export function Navbar() {
   return (
     <NavbarBs className="bg-white shadow-sm mb-3">
-        <Container >
-            Nav
+        <Container className="d-flex justify-content-left align-items-center">
+            <Nav>
+                <Nav.Link to={"/"} as={NavLink} className="custom-font-size">
+                    home
+                </Nav.Link>
+                <Nav.Link to={"/appointments"} as={NavLink} className="custom-font-size">
+                    appointments
+                </Nav.Link>
+                <Nav.Link to={"/about"} as={NavLink} className="custom-font-size">
+                    about
+                </Nav.Link>
+            </Nav>
         </Container>
-    </NavbarBs>
+    </NavbarBs> 
   )
 }
