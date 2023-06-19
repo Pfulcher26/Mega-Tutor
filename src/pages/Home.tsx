@@ -1,7 +1,11 @@
 import React from 'react'
+import { Container } from "react-bootstrap"
+import './Home.css'
 
-export default function Home() {
+export function Home() {
   return (
-    <h1>Welcome to MegaTutor</h1>
+    <Container >
+        <h1 className='main'>Welcome to MegaTutor</h1>
+    </Container>
   )
 }

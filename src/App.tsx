@@ -1,16 +1,15 @@
-import { useState } from 'react'
 import { Routes, Route } from "react-router-dom"
 import { Container } from "react-bootstrap"
-import Home from './pages/Home'
-import Appointments from './pages/Appointments'
-import About from './pages/About'
+import { Home } from './pages/Home'
+import { Appointments } from './pages/Appointments'
+import { About } from './pages/About'
 
 import './App.css'
 
 function App() {
 
   return (
-    <Container>
+    <Container className="mb-4">
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/appointments' element={<Appointments />}></Route>
