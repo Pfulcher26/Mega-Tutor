@@ -2,3 +2,8 @@
    font-size: 1.5rem;
    margin: 15px 0px 10px 0px;  
 }
+
+.custom-flex {
+    width: 100%; 
+    height: 100%;
+}

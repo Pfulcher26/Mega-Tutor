@@ -5,8 +5,8 @@ import './Navbar.css'
 export function Navbar() {
   return (
     <NavbarBs className="bg-white shadow-sm mb-3">
-        <Container className="d-flex justify-content-left align-items-center">
-            <Nav>
+        <Container>
+            <Nav className="w-100 justify-content-between">
                 <Nav.Link to={"/"} as={NavLink} className="custom-font-size">
                     home
                 </Nav.Link>
