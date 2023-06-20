@@ -1,17 +1,25 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Event {
   title: string;
   start: Date;
+  availability: boolean;
 }
 
-const customEvents: Event[] = [
-  { title: "Available appointments", start: new Date() }
+const eventsAPICall: Event[] = [
+  { title: "Available appointments", start: new Date(), availability: true }
 ];
 
 export function Calendar() {
+  const [filteredEvents, setFilteredEvents] = useState<Event[]>([]);
+
+  useEffect(() => {
+    const filtered = eventsAPICall.filter((event) => event.availability);
+    setFilteredEvents(filtered);
+  }, []);
+
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const handleEventClick = (arg: any) => {
@@ -34,7 +42,7 @@ export function Calendar() {
       <FullCalendar
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
-        events={customEvents}
+        events={filteredEvents}
         eventContent={renderEventContent}
         eventClick={handleEventClick}
       />
