@@ -1,5 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
+
 .main {
     display: flex;
     justify-content: center;
     margin: 7rem;
+    font-family: 'Paytone One', sans-serif;
+    font-size: 4rem; 
 }

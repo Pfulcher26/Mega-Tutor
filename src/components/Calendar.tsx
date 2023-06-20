@@ -1,30 +1,48 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import { useState } from "react";
 
-const events = [
-    { title: "Event 1", date: "2023-06-20" },
-    { title: "Event 2", date: "2023-06-22" },
-    { title: "Event 3", date: "2023-06-24" },
-  ];
+interface Event {
+  title: string;
+  start: Date;
+}
+
+const customEvents: Event[] = [
+  { title: "Available appointments", start: new Date() }
+];
 
 export function Calendar() {
- 
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+  const handleEventClick = (arg: any) => {
+    if (arg.event.start) {
+      const clickedDate = arg.event.start;
+      setSelectedDate(clickedDate);
+    }
+  };
+
+  const renderEventContent = (eventInfo: any) => {
     return (
+      <>
+        <i>{eventInfo.event.title}</i>
+      </>
+    );
+  };
+
+  return (
+    <div>
       <FullCalendar
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
-        events={events}
+        events={customEvents}
         eventContent={renderEventContent}
+        eventClick={handleEventClick}
       />
-    );
-  }
-
-  // a custom render function
-function renderEventContent(eventInfo) {
-    return (
-      <>
-        <b>{eventInfo.timeText}</b>
-        <i>{eventInfo.event.title}</i>
-      </>
-    )
-  }
+      {selectedDate && (
+        <div>
+          <h3>Selected Date: {selectedDate.toDateString()}</h3>
+        </div>
+      )}
+    </div>
+  );
+}
