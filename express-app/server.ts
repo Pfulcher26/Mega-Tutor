@@ -1,7 +1,11 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors')
 
 const app = express();
+
+//Enable CORS
+app.use(cors());
 
 // Serve static files from React build output
 app.use(express.static(path.join(__dirname, '../dist')));
