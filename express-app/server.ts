@@ -1,22 +1,23 @@
-const express = require('express');
+// // Empty export to define local scope for this module and avoid app naming conflicts 
+// export{}
+
+const expressApp = require('express');
 const path = require('path');
 const cors = require('cors')
 
-const app = express();
+//require routes 
+const appointmentRoutes = require('./routes/appointmentRoutes.ts');
 
-//Enable CORS
+const app = expressApp();
+
+// Enable CORS
 app.use(cors());
 
 // Serve static files from React build output
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(expressApp.static(path.join(__dirname, '../dist')));
 
-// Define API routes
-app.get('/api/data', (req, res) => {
-  const data = {
-    message: 'Hello from the server!',
-  };
-  res.json(data);
-});
+// Mount Routes
+app.use('/api/appointments', appointmentRoutes)
 
 // Serve React app's HTML file for any other route
 app.get('*', (req, res) => {
